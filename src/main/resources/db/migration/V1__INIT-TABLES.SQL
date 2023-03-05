@@ -1,0 +1,41 @@
+CREATE TABLE IF NOT EXISTS CURSO(
+    codigo INT AUTO_INCREMENT NOT NULL,
+    nome VARCHAR(100) NOT NULL,
+    descricao VARCHAR(4000) NOT NULL,
+    duracao INT NOT NULL,
+    PRIMARY KEY(codigo)
+);
+
+CREATE TABLE IF NOT EXISTS FUNCIONARIO(
+    codigo INT AUTO_INCREMENT NOT NULL,
+    nome VARCHAR(200) NOT NULL,
+    CPF CHAR(11) NOT NULL,
+    nascimento  DATE NOT NULL,
+    cargo VARCHAR(200) NOT NULL,
+    admissao DATE NOT NULL,
+    status BIT NOT NULL,
+    PRIMARY KEY (codigo)
+);
+
+CREATE TABLE IF NOT EXISTS TURMA(
+    codigo INT AUTO_INCREMENT NOT NULL,
+    inicio DATE NOT NULL,
+    fim DATE NOT NULL,
+    local VARCHAR(200),
+    codigo_curso INT,
+    PRIMARY KEY (codigo),
+    CONSTRAINT FK_turmaCurso FOREIGN KEY (codigo_curso)
+    REFERENCES CURSO(codigo)
+    ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS TURMA_PARTICIPANTE(
+    codigo INT AUTO_INCREMENT NOT NULL,
+    codigo_turma INT,
+    codigo_funcionario INT,
+    PRIMARY KEY (CODIGO),
+    CONSTRAINT FK_turmaParticipante
+    FOREIGN KEY (codigo_turma) REFERENCES TURMA(codigo),
+    CONSTRAINT FK_turmaFuncionario
+    FOREIGN KEY (codigo_funcionario) REFERENCES FUNCIONARIO(codigo)
+);

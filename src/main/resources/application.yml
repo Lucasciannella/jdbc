@@ -1,0 +1,13 @@
+app:
+  datasource:
+    main:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3306/linkedrh_db?createDatabaseIfNotExist=true
+      username: root
+      password: root
+      pool-size: 30
+
+server:
+  error:
+    include-binding-errors: always
+    include-message: always
