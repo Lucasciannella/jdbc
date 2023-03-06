@@ -58,9 +58,14 @@ mvn spring-boot:run
 
 Todas as configurações foram feitas, a aplicação esta rodando logo você pode acompanhar a documentação dos endpoints [clicando aqui]( http://localhost:8080/swagger-ui/index.html#)
 
+![](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExODkyOWUzNjRmZWQ4OGFlMjM5NTg1ODRkZWQ0NDVkOWM2ZWQ3MjA1MiZjdD1n/sGOyrLb6ImzpVcDiTl/giphy.gif)
 
 
 
 
-### Considerações finais:
 
+### Notas:
+
+Utilizei do framework Flyway para versionar e auxiliar as migrations do banco de dados.
+
+Eu incrementaria  a aplicação com  Handlers para  tratar as exceções e utilizaria o spring validation para validar a entrada de dados na api.

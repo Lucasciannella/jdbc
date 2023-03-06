@@ -14,20 +14,15 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/curso")
+@CrossOrigin("*")
 public class CursoController {
 
     private final CursoService cursoService;
 
     @PostMapping
-    @Operation(summary = "Registra um curso na base de dados")
+    @Operation(summary = "Salva um curso")
     public ResponseEntity<CursoPostDto> salvar(@RequestBody CursoPostDto cursoPostDto) {
         return new ResponseEntity<>(cursoService.salvar(cursoPostDto), HttpStatus.CREATED);
-    }
-
-    @PutMapping
-    @Operation(summary = "Atualiza um curso")
-    public ResponseEntity<Curso> atualizar(@RequestBody Curso curso) {
-        return new ResponseEntity<>(cursoService.atualizar(curso), HttpStatus.OK);
     }
 
     @GetMapping
@@ -36,8 +31,14 @@ public class CursoController {
         return ResponseEntity.ok(cursoService.listarCursos());
     }
 
+    @PutMapping
+    @Operation(summary = "Atualiza um curso")
+    public ResponseEntity<Curso> atualizar(@RequestBody Curso curso) {
+        return new ResponseEntity<>(cursoService.atualizar(curso), HttpStatus.OK);
+    }
+
     @DeleteMapping("/{id}")
-    @Operation(summary = "Deleta ")
+    @Operation(summary = "Deleta um curso ")
     public ResponseEntity<Void> deletar(@PathVariable Integer id) {
         cursoService.deletarCurso(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
