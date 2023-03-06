@@ -1,5 +1,7 @@
 package linkedrh.com.api.controller;
 
+import linkedrh.com.api.dto.TurmaPostDto;
+import linkedrh.com.api.dto.TurmaPutDto;
 import linkedrh.com.api.entity.Turma;
 import linkedrh.com.api.service.TurmaService;
 import lombok.RequiredArgsConstructor;
@@ -22,13 +24,13 @@ public class TurmaController {
     }
 
     @PostMapping
-    public ResponseEntity<Turma> salvarTurma(@RequestBody Turma turma) {
-        return ResponseEntity.ok(turmaService.salvar(turma));
+    public ResponseEntity<TurmaPostDto> salvarTurma(@RequestBody TurmaPostDto turmaPostDto) {
+        return ResponseEntity.ok(turmaService.salvar(turmaPostDto));
     }
 
     @PutMapping
-    public ResponseEntity<Turma> atualizarTurma(@RequestBody Turma turma) {
-        return new ResponseEntity<>(turmaService.atualizar(turma), HttpStatus.ACCEPTED);
+    public ResponseEntity<TurmaPutDto> atualizarTurma(@RequestBody TurmaPutDto turmaPutDto) {
+        return new ResponseEntity<>(turmaService.atualizar(turmaPutDto), HttpStatus.ACCEPTED);
     }
 
     @DeleteMapping("/{id}")

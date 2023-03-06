@@ -8,7 +8,7 @@ import java.util.Date;
 @Getter
 @Setter
 public class Funcionario {
-    private int codigo;
+    private Integer codigo;
     private String nome;
     private String cpf;
     private Date nascimento;

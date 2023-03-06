@@ -1,5 +1,6 @@
 package linkedrh.com.api.repository;
 
+import linkedrh.com.api.dto.CursoPostDto;
 import linkedrh.com.api.entity.Curso;
 import linkedrh.com.api.mapper.CursoMapper;
 import linkedrh.com.api.dao.CursoDao;
@@ -27,12 +28,12 @@ public class CursoDataAcessService implements CursoDao {
     }
 
     @Override
-    public int salvar(Curso curso) {
+    public int salvar(CursoPostDto cursoPostDto) {
         var sql = """
                 INSERT INTO CURSO(nome, descricao, duracao)
                 VALUES(?,?,?)
                 """;
-        return jdbcTemplate.update(sql, curso.getNome(), curso.getDescricao(), curso.getDuracao());
+        return jdbcTemplate.update(sql, cursoPostDto.getNome(), cursoPostDto.getDescricao(), cursoPostDto.getDuracao());
     }
 
     public int atualizar(Curso curso) {

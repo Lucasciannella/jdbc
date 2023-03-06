@@ -1,6 +1,7 @@
 package linkedrh.com.api.service;
 
 import linkedrh.com.api.dao.CursoDao;
+import linkedrh.com.api.dto.CursoPostDto;
 import linkedrh.com.api.entity.Curso;
 import linkedrh.com.api.exception.NotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -18,12 +19,12 @@ public class CursoService {
         return cursoDao.listarTodos();
     }
 
-    public Curso salvar(Curso curso) {
-        var result = cursoDao.salvar(curso);
+    public CursoPostDto salvar(CursoPostDto cursoPostDto) {
+        var result = cursoDao.salvar(cursoPostDto);
         if (result != 1) {
             throw new IllegalStateException("Não Foi possível salvar o Curso");
         }
-        return curso;
+        return cursoPostDto;
     }
 
     public void deletarCurso(Integer id) {

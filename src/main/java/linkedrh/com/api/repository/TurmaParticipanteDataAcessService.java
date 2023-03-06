@@ -1,8 +1,8 @@
 package linkedrh.com.api.repository;
 
-import linkedrh.com.api.dao.ParticipanteDao;
+import linkedrh.com.api.dao.TurmaParticipanteDao;
+import linkedrh.com.api.dto.TurmaParticipanteDto;
 import linkedrh.com.api.entity.Funcionario;
-import linkedrh.com.api.entity.TurmaParticipante;
 import linkedrh.com.api.mapper.FuncionarioMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -12,7 +12,7 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-public class ParticipanteDataAcessService implements ParticipanteDao {
+public class TurmaParticipanteDataAcessService implements TurmaParticipanteDao {
 
     private final JdbcTemplate jdbcTemplate;
 
@@ -24,11 +24,11 @@ public class ParticipanteDataAcessService implements ParticipanteDao {
     }
 
     @Override
-    public int adicionarParticipante(TurmaParticipante turmaParticipante) {
+    public int adicionarParticipante(TurmaParticipanteDto turmaParticipanteDto) {
         var sql = """
                 INSERT INTO TURMA_PARTICIPANTE (codigo_turma, codigo_funcionario) VALUES(?,?)
                 """;
-        return jdbcTemplate.update(sql, turmaParticipante.getCodigoTurma(), turmaParticipante.getCodigoFuncionario());
+        return jdbcTemplate.update(sql, turmaParticipanteDto.getCodigoTurma(), turmaParticipanteDto.getCodigoFuncionario());
     }
 
     @Override

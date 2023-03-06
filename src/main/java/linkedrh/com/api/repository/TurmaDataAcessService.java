@@ -1,6 +1,8 @@
 package linkedrh.com.api.repository;
 
 import linkedrh.com.api.dao.TurmaDao;
+import linkedrh.com.api.dto.TurmaPostDto;
+import linkedrh.com.api.dto.TurmaPutDto;
 import linkedrh.com.api.entity.Turma;
 import linkedrh.com.api.mapper.TurmaComQuantidadeDeFuncionariosMapper;
 import linkedrh.com.api.mapper.TurmaMapper;
@@ -18,20 +20,20 @@ public class TurmaDataAcessService implements TurmaDao {
     private final JdbcTemplate jdbcTemplate;
 
     @Override
-    public int salvar(Turma turma) {
+    public int salvar(TurmaPostDto turmaPostDto) {
         var sql = """
                 INSERT INTO TURMA (inicio, fim, local, codigo_curso) VALUES (?, ?, ?, ?)
                 """;
-        return jdbcTemplate.update(sql, turma.getInicio(), turma.getFim(), turma.getLocal(), turma.getCodigoCurso());
+        return jdbcTemplate.update(sql, turmaPostDto.getInicio(), turmaPostDto.getFim(), turmaPostDto.getLocal(), turmaPostDto.getCodigoCurso());
 
     }
 
     @Override
-    public int atualizar(Turma turma) {
+    public int atualizar(TurmaPutDto turmaPutDto) {
         var sql = """
                 UPDATE TURMA SET inicio=?, fim=?,local=? WHERE codigo = ?
                 """;
-        return jdbcTemplate.update(sql, turma.getInicio(), turma.getFim(), turma.getLocal(), turma.getCodigo());
+        return jdbcTemplate.update(sql, turmaPutDto.getInicio(), turmaPutDto.getFim(), turmaPutDto.getLocal(), turmaPutDto.getCodigo());
 
     }
 

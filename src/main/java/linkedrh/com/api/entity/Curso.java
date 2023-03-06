@@ -10,8 +10,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Curso {
-    private int codigo;
+    private Integer codigo;
     private String nome;
     private String descricao;
-    private int duracao;
+    private Integer duracao;
 }

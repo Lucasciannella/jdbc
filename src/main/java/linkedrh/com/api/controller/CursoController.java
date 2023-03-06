@@ -1,6 +1,7 @@
 package linkedrh.com.api.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
+import linkedrh.com.api.dto.CursoPostDto;
 import linkedrh.com.api.entity.Curso;
 import linkedrh.com.api.service.CursoService;
 import lombok.RequiredArgsConstructor;
@@ -19,8 +20,8 @@ public class CursoController {
 
     @PostMapping
     @Operation(summary = "Registra um curso na base de dados")
-    public ResponseEntity<Curso> salvar(@RequestBody Curso curso) {
-        return new ResponseEntity<>(cursoService.salvar(curso), HttpStatus.CREATED);
+    public ResponseEntity<CursoPostDto> salvar(@RequestBody CursoPostDto cursoPostDto) {
+        return new ResponseEntity<>(cursoService.salvar(cursoPostDto), HttpStatus.CREATED);
     }
 
     @PutMapping
