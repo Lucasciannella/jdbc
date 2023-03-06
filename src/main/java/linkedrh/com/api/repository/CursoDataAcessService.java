@@ -1,6 +1,8 @@
 package linkedrh.com.api.repository;
 
-import linkedrh.com.api.dto.Curso;
+import linkedrh.com.api.entity.Curso;
+import linkedrh.com.api.mapper.CursoMapper;
+import linkedrh.com.api.dao.CursoDao;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -17,7 +19,7 @@ public class CursoDataAcessService implements CursoDao {
     @Override
     public List<Curso> listarTodos() {
         var sql = """
-                SELECT codigo, nome, descricao, duracao
+                SELECT *
                 FROM CURSO
                 LIMIT 100; 
                 """;
@@ -33,13 +35,11 @@ public class CursoDataAcessService implements CursoDao {
         return jdbcTemplate.update(sql, curso.getNome(), curso.getDescricao(), curso.getDuracao());
     }
 
-
     public int atualizar(Curso curso) {
         var sql = """
                 UPDATE CURSO SET nome= ?, descricao= ?, duracao = ? WHERE codigo= ?
                 """;
-
-        return jdbcTemplate.update(sql,curso.getNome(), curso.getDescricao(), curso.getDuracao(), curso.getCodigo());
+        return jdbcTemplate.update(sql, curso.getNome(), curso.getDescricao(), curso.getDuracao(), curso.getCodigo());
     }
 
     @Override

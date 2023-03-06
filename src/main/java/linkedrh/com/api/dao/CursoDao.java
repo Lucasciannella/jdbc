@@ -1,9 +1,9 @@
-package linkedrh.com.api.repository;
+package linkedrh.com.api.dao;
 
-import linkedrh.com.api.dto.Curso;
-import java.util.Optional;
+import linkedrh.com.api.entity.Curso;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface CursoDao {
     List<Curso> listarTodos();

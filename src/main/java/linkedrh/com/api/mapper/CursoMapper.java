@@ -1,6 +1,6 @@
-package linkedrh.com.api.repository;
+package linkedrh.com.api.mapper;
 
-import linkedrh.com.api.dto.Curso;
+import linkedrh.com.api.entity.Curso;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
@@ -17,6 +17,5 @@ public class CursoMapper implements RowMapper<Curso> {
                 resultSet.getString("descricao"),
                 resultSet.getInt("duracao")
         );
-
     }
 }

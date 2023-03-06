@@ -11,3 +11,6 @@ server:
   error:
     include-binding-errors: always
     include-message: always
+
+springdoc:
+  packages-to-Scan: linkedrh.com.api
