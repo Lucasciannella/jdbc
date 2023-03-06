@@ -1,8 +1,8 @@
 package linkedrh.com.api.service;
 
+import linkedrh.com.api.dao.CursoDao;
 import linkedrh.com.api.entity.Curso;
 import linkedrh.com.api.exception.NotFoundException;
-import linkedrh.com.api.dao.CursoDao;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -38,17 +38,17 @@ public class CursoService {
         });
     }
 
-    public Curso atualizar(Curso curso){
-      var cursos = cursoDao.buscarCursoPorId(curso.getCodigo());
-      cursos.ifPresentOrElse(curso1 -> {
-          var result = cursoDao.atualizar(curso);
-          if (result != 1){
-          throw  new IllegalStateException("Não foi possível deletar o curso");
-          }
-      },() -> {
-          throw  new NotFoundException(String.format("Curso com o id %s não encontrado", curso.getCodigo()));
-              }
-      );
-     return curso;
+    public Curso atualizar(Curso curso) {
+        var cursos = cursoDao.buscarCursoPorId(curso.getCodigo());
+        cursos.ifPresentOrElse(curso1 -> {
+                    var result = cursoDao.atualizar(curso);
+                    if (result != 1) {
+                        throw new IllegalStateException("Não foi possível deletar o curso");
+                    }
+                }, () -> {
+                    throw new NotFoundException(String.format("Curso com o id %s não encontrado", curso.getCodigo()));
+                }
+        );
+        return curso;
     }
 }

@@ -7,6 +7,6 @@ import lombok.Setter;
 @Setter
 public class TurmaParticipante {
     private Long codigo;
-    private Integer codigo_turma;
-    private Integer codigo_funcionario;
+    private Integer codigoTurma;
+    private Integer codigoFuncionario;
 }

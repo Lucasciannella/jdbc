@@ -1,8 +1,8 @@
 package linkedrh.com.api.service;
 
+import linkedrh.com.api.dao.ParticipanteDao;
 import linkedrh.com.api.entity.Funcionario;
 import linkedrh.com.api.entity.TurmaParticipante;
-import linkedrh.com.api.dao.ParticipanteDao;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,19 +14,19 @@ public class ParticipanteService {
 
     private final ParticipanteDao participanteDao;
 
-    public TurmaParticipante adicionarParticipante(TurmaParticipante turmaParticipante){
+    public TurmaParticipante adicionarParticipante(TurmaParticipante turmaParticipante) {
         var result = participanteDao.adicionarParticipante(turmaParticipante);
-        if( result!=1){
+        if (result != 1) {
             throw new IllegalStateException("Não foi possível adicionar participante a turma");
         }
-        return  turmaParticipante;
+        return turmaParticipante;
     }
 
-    public List<Funcionario> listarParticipantes(int codigo_turma){
-        return participanteDao.listarParticipantes(codigo_turma);
+    public List<Funcionario> listarParticipantes(int idTurma) {
+        return participanteDao.listarParticipantes(idTurma);
     }
 
-    public void excluirParticipantes(int idTurma, int idFuncionario){
-        participanteDao.excluirParticipante(idTurma,idFuncionario);
+    public void excluirParticipantes(int idTurma, int idFuncionario) {
+        participanteDao.excluirParticipante(idTurma, idFuncionario);
     }
 }
